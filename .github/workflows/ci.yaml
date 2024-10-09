@@ -18,7 +18,7 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1
 
     - name: Install dependencies
-      run: sudo apt install -y rpm dpkg-dev dput gh cmake gcc
+      run: sudo apt install -y rpm dpkg-dev dput gh cmake gcc make
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1

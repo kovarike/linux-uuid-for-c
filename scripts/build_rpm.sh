@@ -1,5 +1,8 @@
 set -e
 
+sudo apt-get update
+sudo apt-get install -y cmake gcc make
+
 VERSION="1.0.0"
 PACKAGE_NAME="uuid"
 RPMBUILD_DIR="$HOME/rpmbuild"
