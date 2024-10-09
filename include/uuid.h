@@ -65,7 +65,7 @@ void generate_random_bytes(unsigned char *buffer, size_t size);
 void guuid(Uuid *uuid);
 
 // Função para copiar UUID para a estrutura User
-void unparse(Uuid *out, Uuid *id);
+void unparse(char *out, Uuid *id);
 
 
 
