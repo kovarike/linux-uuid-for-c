@@ -37,11 +37,11 @@ jobs:
         chmod +x ./scripts/build_rpm.sh 
         # bash ./scripts/build_rpm.sh
     - name: Set execute permission for uuid.rb
-      run: chmod +x ./scripts/uuid.rb
+      run: chmod 644 ./scripts/uuid.rb
       
 
     - name: Build Homebrew Formula
-      run: ruby ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
+      run: ruby -d ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
 
     - name: Build Chocolatey Package
       shell: pwsh

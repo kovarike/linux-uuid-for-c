@@ -9,12 +9,11 @@ mkdir -p $FORMULA_DIR
 
 # Cria a fórmula Homebrew
 cat <<EOF > $FORMULA_DIR/uuid.rb
-class Uuid  < Formula
+class Uuid < Formula
   desc "Biblioteca de uuid para C"
   homepage "https://github.com/kovarike/uuid-for-c"
   url "https://github.com/kovarike/uuid-for-c/archive/v#{VERSION}.tar.gz"
-  sha256 "$(shasum -a 256 ./homebrew-formula/uuid-#{VERSION}.tar.gz | awk '{ print $1 }')"
-  version "#{VERSION}"
+  sha256 "#{SHA256_CHECKSUM}"  # Você deve gerar o checksum antes de usar
 
   def install
     system "cmake", ".", *std_cmake_args
@@ -22,4 +21,5 @@ class Uuid  < Formula
     system "make", "install"
   end
 end
+
 EOF
