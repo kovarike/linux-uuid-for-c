@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y rpm dpkg-dev devscripts build-essential fakeroot ruby dput gh cmake gcc make
+        sudo apt-get install -y rpm dpkg-dev devscripts build-essential fakeroot ruby dput gh cmake gcc make devscripts debhelper dput
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1 ./scripts/uuid.rb

@@ -5,7 +5,7 @@ set -e
 PPA="ppa:kovarike/uuid"
 PACKAGE_NAME="uuid"
 VERSION="1.0.0"
-BUILD_DIR="../build"
+BUILD_DIR="build"
 
 # Gere os arquivos necessários para o PPA
 cd $BUILD_DIR
