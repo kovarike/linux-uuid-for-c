@@ -64,8 +64,9 @@ mkdir -p $RPMBUILD_DIR/SPECS  # Certifique-se de criar o diretório SPECS
 cmake -S . -B build
 cmake --build build
 
+cd /home/runner/work/uuid-for-c
 # Gera o arquivo tar.gz da fonte
-tar czvf $RPMBUILD_DIR/SOURCES/$PACKAGE_NAME-$VERSION.tar.gz . 
+tar czvf $RPMBUILD_DIR/SOURCES/$PACKAGE_NAME-$VERSION.tar.gz . --exclude-vcs --transform="s|^|$PACKAGE_NAME-$VERSION/|" .
 
 # Gera o .spec dinâmico
 cat <<EOF > $RPMBUILD_DIR/SPECS/$PACKAGE_NAME.spec
