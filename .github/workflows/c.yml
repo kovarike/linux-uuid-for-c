@@ -44,14 +44,14 @@ jobs:
     #   run: |
     #     pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
 
-    - name: Upload to PPA
-      run: bash ./scripts/upload_to_ppa.sh
-      env:
-        DEBFULLNAME: 'Danilo Silva'
-        DEBEMAIL: 'danilokovarike@gmail.com'
-        GPG_KEY: ${{ secrets.GPG_KEY }}
-        PPA_USERNAME: ${{ secrets.PPA_USERNAME }}
-        PPA_PASSWORD: ${{ secrets.PPA_PASSWORD }}
+    # - name: Upload to PPA
+    #   run: bash ./scripts/upload_to_ppa.sh
+    #   env:
+    #     DEBFULLNAME: 'Danilo Silva'
+    #     DEBEMAIL: 'danilokovarike@gmail.com'
+    #     GPG_KEY: ${{ secrets.GPG_KEY }}
+    #     PPA_USERNAME: ${{ secrets.PPA_USERNAME }}
+    #     PPA_PASSWORD: ${{ secrets.PPA_PASSWORD }}
 
     # - name: Submit Homebrew Formula
     #   run: bash ./scripts/submit_homebrew_formula.sh
