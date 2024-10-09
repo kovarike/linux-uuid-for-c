@@ -64,8 +64,8 @@ jobs:
     #   env:
     #     CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
 
-    - name: Submit RPM to Fedora Copr
-      run: bash ./scripts/submit_rpm_to_copr.sh
-      env:
-        FEDORA_USER: ${{ secrets.FEDORA_USER }}
-        FEDORA_PASSWORD: ${{ secrets.FEDORA_PASSWORD }}
+    # - name: Submit RPM to Fedora Copr
+    #   run: bash ./scripts/submit_rpm_to_copr.sh
+    #   env:
+    #     FEDORA_USER: ${{ secrets.FEDORA_USER }}
+    #     FEDORA_PASSWORD: ${{ secrets.FEDORA_PASSWORD }}
