@@ -1,0 +1,12 @@
+Source: uuid
+Section: utils
+Priority: optional
+Maintainer: Danilo Silva <danilo***@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 4.1.4
+Homepage: https://github.com/kovarike/uuid-for-c/
+
+Package: uuid
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Biblioteca de uuid para C.
