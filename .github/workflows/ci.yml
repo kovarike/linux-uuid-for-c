@@ -1,0 +1,57 @@
+name: Build and Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up CMake
+      uses: jwlawson/actions-setup-cmake@v1
+
+    - name: Install dependencies
+      run: sudo apt-get install -y rpmdevtools dpkg-dev dput gh
+
+    - name: Build and Package DEB
+      run: bash ./scripts/build_deb.sh
+
+    - name: Build and Package RPM
+      run: bash ./scripts/build_rpm.sh
+
+    - name: Build Homebrew Formula
+      run: bash ./scripts/build_homebrew.sh
+
+    - name: Build Chocolatey Package
+      run: powershell ./scripts/build_choco.ps1
+
+    - name: Upload to PPA
+      run: bash ./scripts/upload_to_ppa.sh
+      env:
+        DEBFULLNAME: 'Danilo Silva'
+        DEBEMAIL: 'danilokovarike@gmail.com'
+        GPG_KEY: ${{ secrets.GPG_KEY }}
+        PPA_USERNAME: ${{ secrets.PPA_USERNAME }}
+        PPA_PASSWORD: ${{ secrets.PPA_PASSWORD }}
+
+    - name: Submit Homebrew Formula
+      run: bash ./scripts/submit_homebrew_formula.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Submit Chocolatey Package
+      run: powershell ./scripts/submit_choco_package.ps1
+      env:
+        CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+
+    - name: Submit RPM to Fedora Copr
+      run: bash ./scripts/submit_rpm_to_copr.sh
+      env:
+        FEDORA_USER: ${{ secrets.FEDORA_USER }}
+        FEDORA_PASSWORD: ${{ secrets.FEDORA_PASSWORD }}
