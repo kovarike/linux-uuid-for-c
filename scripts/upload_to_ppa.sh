@@ -8,8 +8,8 @@ VERSION="1.0.0"
 BUILD_DIR="build"
 
 # Gere os arquivos necessários para o PPA
-cd $BUILD_DIR/debian
-debuild -S -sa
+# cd $BUILD_DIR/debian
+# debuild -S -sa
 debuild -S -sa -b $BUILD_DIR/debian
 
 # Use dput para subir o pacote para o PPA
