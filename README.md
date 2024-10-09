@@ -16,7 +16,7 @@ uuid/
 │   ├── build_deb.sh
 │   ├── build_rpm.sh
 │   ├── build_choco.ps1
-│   ├── build_homebrew.rb
+│   ├── uuid.rb
 │   ├── submit_rpm_to_copr.sh
 │   ├── submit_choco_package.ps1
 │   ├── submit_homebrew_formula.sh

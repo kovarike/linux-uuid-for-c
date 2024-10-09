@@ -24,21 +24,16 @@ jobs:
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1 ./scripts/uuid.rb
-    # - name: Create tar.gz
-    #   run: |
-    #     VERSION="1.0.0"
-    #     tar -czf homebrew-formula/uuid-$VERSION.tar.gz -C ./ src/  
-
-
+  
     - name: Build and Package DEB
       run: bash ./scripts/build_deb.sh
 
     - name: Build and Package RPM
       run:
         chmod +x ./scripts/build_rpm.sh  
-        # bash ./scripts/build_rpm.sh
+  
     - name: Set execute permission for uuid.rb
-      run: chmod +x ./scripts/uuid.rb
+      run: chmod 644 ./scripts/uuid.rb
       
     - name: Build Homebrew Formula
       run: ruby ./scripts/uuid.rb
