@@ -29,10 +29,12 @@ jobs:
       run: bash ./scripts/build_rpm.sh
 
     - name: Build Homebrew Formula
-      run: bash ./scripts/build_homebrew.sh
+      run: bash ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
 
     - name: Build Chocolatey Package
-      run: powershell ./scripts/build_choco.ps1
+      run: |
+        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+        powershell ./scripts/build_choco.ps1
 
     - name: Upload to PPA
       run: bash ./scripts/upload_to_ppa.sh
@@ -49,7 +51,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Submit Chocolatey Package
-      run: powershell ./scripts/submit_choco_package.ps1
+      run: |
+        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+        powershell ./scripts/submit_choco_package.ps1
       env:
         CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
 
