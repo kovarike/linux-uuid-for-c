@@ -13,7 +13,7 @@ class Uuid  < Formula
   desc "Biblioteca de uuid para C"
   homepage "https://github.com/kovarike/uuid-for-c"
   url "https://github.com/kovarike/uuid-for-c/archive/v$VERSION.tar.gz"
-  sha256 "$(shasum -a 256 $PACKAGE_NAME-$VERSION.tar.gz | awk '{ print $1 }')"
+  sha256 "$(shasum -a 256 $FORMULA_DIR/uuid-$VERSION.tar.gz | awk '{ print $1 }')"
   version "$VERSION"
 
   def install

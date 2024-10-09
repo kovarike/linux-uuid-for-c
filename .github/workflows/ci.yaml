@@ -32,7 +32,9 @@ jobs:
       run:
         chmod +x ./scripts/build_rpm.sh  
         # bash ./scripts/build_rpm.sh
-
+    - name: Set execute permission for uuid.rb
+      run: chmod +x ./scripts/uuid.rb
+      
     - name: Build Homebrew Formula
       run: ruby ./scripts/uuid.rb
 
