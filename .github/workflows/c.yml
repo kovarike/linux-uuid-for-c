@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y rpm dpkg-dev ruby dput gh cmake gcc make
+        sudo apt-get install -y rpm dpkg-dev devscripts build-essential fakeroot ruby dput gh cmake gcc make
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1 ./scripts/uuid.rb  
@@ -31,18 +31,18 @@ jobs:
     - name: Build and Package RPM
       run:
         chmod +x ./scripts/build_rpm.sh 
-        
-    - name: Set execute permission for uuid.rb
-      run: chmod 644 ./scripts/uuid.rb
+
+    # - name: Set execute permission for uuid.rb
+    #   run: chmod 644 ./scripts/uuid.rb
       
 
-    - name: Build Homebrew Formula
-      run: ruby -d ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
+    # - name: Build Homebrew Formula
+    #   run: ruby -d ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
 
-    - name: Build Chocolatey Package
-      shell: pwsh
-      run: |
-        pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
+    # - name: Build Chocolatey Package
+    #   shell: pwsh
+    #   run: |
+    #     pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
 
     - name: Upload to PPA
       run: bash ./scripts/upload_to_ppa.sh
@@ -53,16 +53,16 @@ jobs:
         PPA_USERNAME: ${{ secrets.PPA_USERNAME }}
         PPA_PASSWORD: ${{ secrets.PPA_PASSWORD }}
 
-    - name: Submit Homebrew Formula
-      run: bash ./scripts/submit_homebrew_formula.sh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Submit Homebrew Formula
+    #   run: bash ./scripts/submit_homebrew_formula.sh
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Submit Chocolatey Package
-      run: |
-        pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
-      env:
-        CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+    # - name: Submit Chocolatey Package
+    #   run: |
+    #     pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
+    #   env:
+    #     CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
 
     - name: Submit RPM to Fedora Copr
       run: bash ./scripts/submit_rpm_to_copr.sh
