@@ -27,7 +27,9 @@ jobs:
       run: bash ./scripts/build_deb.sh
 
     - name: Build and Package RPM
-      run: bash ./scripts/build_rpm.sh
+      run:
+        chmod +x ./scripts/build_rpm.sh  
+        # bash ./scripts/build_rpm.sh
 
     - name: Build Homebrew Formula
       run: bash ./scripts/build_homebrew.sh

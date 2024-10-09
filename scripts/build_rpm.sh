@@ -6,7 +6,7 @@ PACKAGE_NAME="uuid"
 RPMBUILD_DIR="$HOME/rpmbuild"
 
 sudo apt-get update
-sudo apt-get install -y cmake gcc make
+sudo apt-get install -y cmake gcc make rpm 
 
 rm -rf $RPMBUILD_DIR/SOURCES/*
 rm -rf $RPMBUILD_DIR/SPECS/*
