@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y rpm dpkg-dev dput gh cmake gcc make
+        sudo apt-get install -y rpm dpkg-dev ruby dput gh cmake gcc make
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1
@@ -34,7 +34,7 @@ jobs:
         # bash ./scripts/build_rpm.sh
 
     - name: Build Homebrew Formula
-      run: bash ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
+      run: ruby ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
 
     - name: Build Chocolatey Package
       shell: pwsh
