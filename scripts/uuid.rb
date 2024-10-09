@@ -12,9 +12,9 @@ cat <<EOF > $FORMULA_DIR/uuid.rb
 class Uuid  < Formula
   desc "Biblioteca de uuid para C"
   homepage "https://github.com/kovarike/uuid-for-c"
-  url "https://github.com/kovarike/uuid-for-c/archive/v$VERSION.tar.gz"
-  sha256 "$(shasum -a 256 $FORMULA_DIR/uuid-$VERSION.tar.gz | awk '{ print $1 }')"
-  version "$VERSION"
+  url "https://github.com/kovarike/uuid-for-c/archive/v#{VERSION}.tar.gz"
+  sha256 "$(shasum -a 256 ./homebrew-formula/uuid-#{VERSION}.tar.gz | awk '{ print $1 }')"
+  version "#{VERSION}"
 
   def install
     system "cmake", ".", *std_cmake_args

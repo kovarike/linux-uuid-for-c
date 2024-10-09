@@ -23,7 +23,11 @@ jobs:
         sudo apt-get install -y rpm dpkg-dev ruby dput gh cmake gcc make
 
     - name: Set execute permission
-      run: chmod +x ./scripts/*.sh ./scripts/*.ps1
+      run: chmod +x ./scripts/*.sh ./scripts/*.ps1 ./scripts/uuid.rb
+    - name: Create tar.gz
+      run: |
+        VERSION="1.0.0"
+        tar -czf homebrew-formula/uuid-$VERSION.tar.gz -C ./ src/  # Ajuste o caminho se necessário
 
     - name: Build and Package DEB
       run: bash ./scripts/build_deb.sh
