@@ -54,11 +54,11 @@ set -e
 
 VERSION="1.0.0"
 PACKAGE_NAME="uuid"
-RPMBUILD_DIR="/tmp/rpmbuild"
+RPMBUILD_DIR="$HOME/rpmbuild"
 
 # Cria as pastas necessárias para o rpmbuild
-mkdir -p $RPMBUILD_DIR/SOURCES
-mkdir -p $RPMBUILD_DIR/SPECS  # Certifique-se de criar o diretório SPECS
+sudo mkdir -p $RPMBUILD_DIR/SOURCES
+sudo mkdir -p $RPMBUILD_DIR/SPECS  # Certifique-se de criar o diretório SPECS
 
 # Compila o código
 cmake -S . -B build
