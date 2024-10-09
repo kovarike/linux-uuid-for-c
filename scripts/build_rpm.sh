@@ -54,7 +54,7 @@ set -e
 
 VERSION="1.0.0"
 PACKAGE_NAME="uuid"
-RPMBUILD_DIR="/rpmbuild"
+RPMBUILD_DIR="/tmp/rpmbuild"
 
 # Cria as pastas necessárias para o rpmbuild
 mkdir -p $RPMBUILD_DIR/SOURCES
