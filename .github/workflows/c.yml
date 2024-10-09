@@ -39,8 +39,7 @@ jobs:
     - name: Build Chocolatey Package
       shell: pwsh
       run: |
-        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-        ./scripts/build_choco.ps1
+        pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
 
     - name: Upload to PPA
       run: bash ./scripts/upload_to_ppa.sh
@@ -58,8 +57,7 @@ jobs:
 
     - name: Submit Chocolatey Package
       run: |
-        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-        powershell ./scripts/submit_choco_package.ps1
+        pwsh -ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
       env:
         CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
 
