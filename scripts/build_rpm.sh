@@ -1,11 +1,15 @@
 set -e
 
-sudo apt-get update
-sudo apt-get install -y cmake gcc make
 
 VERSION="1.0.0"
 PACKAGE_NAME="uuid"
 RPMBUILD_DIR="$HOME/rpmbuild"
+
+sudo apt-get update
+sudo apt-get install -y cmake gcc make
+
+rm -rf $RPMBUILD_DIR/SOURCES/*
+rm -rf $RPMBUILD_DIR/SPECS/*
 
 # Cria as pastas necessárias para o rpmbuild
 mkdir -p $RPMBUILD_DIR/SOURCES
