@@ -6,7 +6,6 @@ PACKAGE_NAME="uuid"
 RPMBUILD_DIR="/tmp/rpmbuild"
 
 # Cria as pastas necessárias para o rpmbuild
-rpmdev-setuptree
 mkdir -p $RPMBUILD_DIR/SOURCES
 
 # Compila o código
