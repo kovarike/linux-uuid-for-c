@@ -2,7 +2,7 @@
 set -e
 
 # Defina as variáveis
-PPA="ppa:yourlaunchpadusername/yourppa"
+PPA="ppa:kovarike/uuid"
 PACKAGE_NAME="uuid"
 VERSION="1.0.0"
 BUILD_DIR="build"
