@@ -18,7 +18,9 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1
 
     - name: Install dependencies
-      run: sudo apt-get install -y rpm dpkg-dev dput gh cmake gcc make
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y rpm dpkg-dev dput gh cmake gcc make
 
     - name: Set execute permission
       run: chmod +x ./scripts/*.sh ./scripts/*.ps1
@@ -35,9 +37,10 @@ jobs:
       run: bash ./scripts/uuid.rb  # Certifique-se de que este é o script correto.
 
     - name: Build Chocolatey Package
+      shell: pwsh
       run: |
         Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-        powershell ./scripts/build_choco.ps1
+        ./scripts/build_choco.ps1
 
     - name: Upload to PPA
       run: bash ./scripts/upload_to_ppa.sh
