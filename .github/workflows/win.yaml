@@ -1,0 +1,73 @@
+name: Windows uuid package for C
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up CMake
+      uses: jwlawson/actions-setup-cmake@v1
+
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; `
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Install dependencies using Chocolatey
+      run: |
+        choco install mingw cmake make -y
+
+
+    - name: Set environment variables for Path
+      run: |
+        $env:Path += ";C:\ProgramData\chocolatey\lib\mingw\tools\install"
+        $env:Path += ";C:\Program Files\CMake\bin"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\make\tools\install"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\make\tools"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\make"
+        $env:Path += ";C:\MinGW\bin"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\mingw\tools"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\mingw"
+        $env:Path += ";C:\ProgramData\mingw64\mingw64\bin"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\cmake.install"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\cmake.install\tools"
+        $env:Path += ";C:\ProgramData\chocolatey\lib\cmake"
+
+    - name: Build 
+      run: |
+        cd build
+        cmake ..
+        make
+        cp uuid.dll ../tools
+        cp uuid.lib ../tools
+
+    - name: Set execution policy for PowerShell scripts
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+
+    - name: Set execute permission (Windows PowerShell)
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force 
+        ./scripts/*.ps1
+
+    - name: Build Chocolatey Package
+      shell: pwsh
+      run: |
+        pwsh Set-ExecutionPolicy Bypass -File ./scripts/build_choco.ps1
+
+    - name: Submit Chocolatey Package
+      run: |
+        pwsh Set-ExecutionPolicy Bypass -File ./scripts/push_choco.ps1
+      env:
+        CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+

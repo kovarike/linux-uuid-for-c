@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "uuid.h": "c"
+        "uuid.h": "c",
+        "unistd.h": "c",
+        "errno.h": "c",
+        "cstdlib": "c",
+        "uniqueid.h": "c",
+        "fcntl.h": "c",
+        "winid.h": "c",
+        "wincrypt.h": "c"
     }
 }

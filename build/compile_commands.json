@@ -1,0 +1,14 @@
+[
+{
+  "directory": "E:/uuid/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe -Duuid_dll_EXPORTS @CMakeFiles/uuid_dll.dir/includes_C.rsp -g -o CMakeFiles\\uuid_dll.dir\\src\\winid.c.obj -c E:\\uuid\\src\\winid.c",
+  "file": "E:/uuid/src/winid.c",
+  "output": "CMakeFiles/uuid_dll.dir/src/winid.c.obj"
+},
+{
+  "directory": "E:/uuid/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe  @CMakeFiles/uuid_lib.dir/includes_C.rsp -g -o CMakeFiles\\uuid_lib.dir\\src\\winid.c.obj -c E:\\uuid\\src\\winid.c",
+  "file": "E:/uuid/src/winid.c",
+  "output": "CMakeFiles/uuid_lib.dir/src/winid.c.obj"
+}
+]

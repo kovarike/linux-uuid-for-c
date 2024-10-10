@@ -1,12 +1,18 @@
 #ifndef UUID_H
 #define UUID_H
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+#include <windows.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <wincrypt.h>
+
+
+
 
 #define SIZE_ID 37
 #define INITIAL_SIZE 17  // Tamanho inicial da tabela de hash
@@ -26,9 +32,11 @@ typedef struct {
     int count;           // Número de elementos na tabela
 } UuidHashTable;
 
+extern UuidHashTable *uuid_table; 
+
+
 typedef struct {
     char uuid[SIZE_ID];
-    char id[SIZE_ID];
 } Uuid;
 
 
@@ -58,15 +66,13 @@ void add_uuid(UuidHashTable *table, const char *uuid);
 // Função para verificar se um UUID é único
 int is_unique_uuid(UuidHashTable *table, const char *uuid);
 
-// Função para gerar números aleatórios de forma segura (Linux/Windows)
+void parse(char *out, Uuid *id);
+
 void generate_random_bytes(unsigned char *buffer, size_t size);
 
-// Função para gerar o UUID v4
 void guuid(Uuid *uuid);
 
-// Função para copiar UUID para a estrutura User
-void unparse(char *out, Uuid *id);
-
+Uuid* create_uuid(); 
 
 
 
